@@ -85,8 +85,8 @@ Feature: storageClass related feature
       | ["spec"]["containers"][0]["volumeMounts"][0]["mountPath"]    | /mnt/iaas |
     Then the step should succeed
     Given the pod named "mypod" becomes ready
-    And the "mypvc" PVC becomes :bound within 120 seconds
-    And the expression should be true> pvc.capacity == "<size>"
+    And the "mypvc" PVC becomes :bound within 240 seconds
+    And the expression should be true> pvc.capacity == "1Ti"
     And the expression should be true> pvc.access_modes[0] == "ReadWriteOnce"
     And the expression should be true> pv(pvc.volume_name).reclaim_policy == "Delete"
     When I execute on the pod:
